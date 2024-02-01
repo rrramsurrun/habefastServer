@@ -2,7 +2,7 @@ package com.portfolio.habefastserver.service;
 
 import java.util.List;
 
-import com.portfolio.habefastserver.pojos.ExerciseTemplate;
+import com.portfolio.habefastserver.entity.ExerciseTemplate;
 
 public interface ExerciseTemplateService {
   List<ExerciseTemplate> getExerciseTemplates();

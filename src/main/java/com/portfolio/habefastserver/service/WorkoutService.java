@@ -2,7 +2,7 @@ package com.portfolio.habefastserver.service;
 
 import java.util.List;
 
-import com.portfolio.habefastserver.pojos.Workout;
+import com.portfolio.habefastserver.entity.Workout;
 
 public interface WorkoutService {
 

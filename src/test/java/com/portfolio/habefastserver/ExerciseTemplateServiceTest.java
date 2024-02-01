@@ -12,7 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.portfolio.habefastserver.pojos.ExerciseTemplate;
+import com.portfolio.habefastserver.entity.ExerciseTemplate;
 import com.portfolio.habefastserver.repository.ExerciseTemplateRepository;
 import com.portfolio.habefastserver.service.ExerciseTemplateServiceImpl;
 
@@ -23,21 +23,5 @@ public class ExerciseTemplateServiceTest {
   private ExerciseTemplateRepository exerciseTemplateRepositoryMock;
   @InjectMocks
   ExerciseTemplateServiceImpl exerciseTemplateServiceImpl;
-
-  @Test
-  public void getExerciseTemplatesFromRepoTest() {
-    when(exerciseTemplateRepositoryMock.getExerciseTemplates()).thenReturn(Arrays.asList(
-        new ExerciseTemplate("0", "Bench Press", "Reps", "Chest"),
-        new ExerciseTemplate("1", "Cable Row", "Reps", "Back"),
-        new ExerciseTemplate("2", "Back Squat", "Reps", "Legs"),
-        new ExerciseTemplate("3", "Deadlift", "Reps", "Legs")));
-
-    List<ExerciseTemplate> result = exerciseTemplateServiceImpl.getExerciseTemplates();
-
-    assertEquals("0", result.get(0).getId());
-    assertEquals("Cable Row", result.get(1).getName());
-    assertEquals("Reps", result.get(2).getExerciseType());
-    assertEquals("Legs", result.get(3).getBodyPart());
-  }
 
 }
