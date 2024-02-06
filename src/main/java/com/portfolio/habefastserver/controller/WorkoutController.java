@@ -26,9 +26,9 @@ public class WorkoutController {
   }
 
   @PostMapping("workouts")
-  public ResponseEntity<HttpStatus> addWorkout(@RequestBody Workout workout) {
+  public ResponseEntity<Workout> addWorkout(@RequestBody Workout workout) {
     workoutService.addWorkout(workout);
-    return new ResponseEntity<>(HttpStatus.CREATED);
+    return new ResponseEntity<>(workout, HttpStatus.CREATED);
   }
 
 }
