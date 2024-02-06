@@ -18,7 +18,7 @@ public class ExerciseTemplate {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ex_template_id")
-  private long id;
+  private Long id;
   @Column(name = "name", nullable = false)
   private String name;
   @Column(name = "type", nullable = false)
