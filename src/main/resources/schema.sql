@@ -12,4 +12,11 @@ CREATE TABLE exercise_template (
   name varchar(100),
   type varchar(20),
   body_part varchar(20)
+);
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username varchar(50),
+  password varchar(100)
 )
