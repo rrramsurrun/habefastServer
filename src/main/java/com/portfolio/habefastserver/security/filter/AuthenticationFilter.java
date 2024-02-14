@@ -3,6 +3,7 @@ package com.portfolio.habefastserver.security.filter;
 import java.io.IOException;
 import java.util.Date;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -11,6 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.portfolio.habefastserver.entity.User;
 import com.portfolio.habefastserver.security.CustomAuthenticationManager;
 import com.portfolio.habefastserver.security.SecurityConstants;
@@ -53,6 +55,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         .withSubject(authResult.getName())
         .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.TOKEN_EXPIRATION))
         .sign(Algorithm.HMAC512(SecurityConstants.SECRET_KEY));
+    // CORS Issue seems to be preventing Headers properly coming across. Include in
+    // body as well
+    response.getWriter()
+        .write("{\"" + SecurityConstants.AUTHORIZATION + "\":\"" + SecurityConstants.BEARER + token + "\"}");
     response.addHeader(SecurityConstants.AUTHORIZATION, SecurityConstants.BEARER + token);
+    response.addHeader("Dummy Header", SecurityConstants.BEARER + token);
   }
 }

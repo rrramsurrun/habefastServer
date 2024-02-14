@@ -25,8 +25,11 @@ public class HabefastserverApplication {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/*").allowedMethods("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS")
-            .allowedOrigins("http://127.0.0.1:5173/");
+            .allowedOrigins("http://127.0.0.1:5173/")
+            .allowCredentials(true)
+            .allowedHeaders("*");
       }
+
     };
   }
 
